@@ -13,11 +13,12 @@
                                 <div class="input-group mb-3">
                                     <VueMultiselect
                                         v-model="barcode"
-                                        label="barcode"
+                                        :custom-label="customLabel"
                                         track-by="barcode"
                                         :options="products"
                                         @close="searchProduct"
-                                        ></VueMultiselect>
+                                        placeholder="Search by barcode or title"
+                                    />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label fw-bold">Product Name</label>
@@ -112,9 +113,9 @@
                                 </div>
                                 <div class="text-end mt-4">
                                     <button class="btn btn-warning btn-md border-0 shadow text-uppercase me-2">Cancel</button>
-                                    
+
                                     <button v-if="hasAnyPermission(['purchase_transactions.order'])" @click.prevent="storeTransaction" class="btn btn-purple btn-md border-0 shadow text-uppercase me-2" :disabled="cash < grandTotal || grandTotal <= 0 ">Purchase Order & Print</button>
-                                    
+
                                     <button v-if="hasAnyPermission(['purchase_transactions.retur'])" @click.prevent="storeTransaction" class="btn btn-danger btn-md border-0 shadow text-uppercase" :disabled="cash > grandTotal ||grandTotal >= 0">Purchase Retur & Print</button>
                                 </div>
                             </div>
@@ -178,6 +179,10 @@
             const barcode = ref('');
             const product = ref({});
             const qty = ref(1);
+
+            const customLabel = (option) => {
+                return `${option.barcode} - ${option.title}`;
+            }
 
             //metho "searchProduct"
             const searchProduct = async () => {
@@ -326,6 +331,7 @@
             }
 
             return {
+                customLabel,
                 barcode,
                 product,
                 searchProduct,

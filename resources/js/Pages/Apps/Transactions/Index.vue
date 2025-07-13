@@ -12,11 +12,12 @@
                                 <div class="input-group mb-3">
                                     <VueMultiselect
                                         v-model="barcode"
-                                        label="barcode"
+                                        :custom-label="customLabel"
                                         track-by="barcode"
                                         :options="products"
                                         @close="searchProduct"
-                                        ></VueMultiselect>
+                                        placeholder="Search by barcode or title"
+                                    />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label fw-bold">Product Name</label>
@@ -180,6 +181,10 @@
             const product = ref({});
             const qty = ref(1);
 
+            const customLabel = (option) => {
+                return `${option.barcode} - ${option.title}`;
+            }
+
             //metho "searchProduct"
             const searchProduct = async () => {
 
@@ -342,6 +347,7 @@
             }
 
             return {
+                customLabel,
                 barcode,
                 product,
                 searchProduct,

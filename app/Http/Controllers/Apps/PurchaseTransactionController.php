@@ -47,8 +47,10 @@ class PurchaseTransactionController extends Controller
      */
     public function searchProduct(Request $request)
     {
-        //find product by barcode
-        $product = Product::where('id', $request->barcode)->first();
+        $search = $request->barcode;
+        $product = Product::where('barcode', $search)
+                ->orWhere('title', 'LIKE', '%' . $search . '%')
+                ->first();
 
         if($product) {
             return response()->json([
