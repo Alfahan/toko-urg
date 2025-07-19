@@ -23,8 +23,8 @@
                                 </form>
                                 <hr>
                                 <div class="export text-end mb-3">
-                                    <a :href="`/apps/suppliers_report/export`" target="_blank" class="btn btn-success btn-md border-0 shadow me-3"><i class="fa fa-file-excel"></i> EXCEL</a>
-                                    <a :href="`/apps/suppliers_report/pdf`" target="_blank" class="btn btn-secondary btn-md border-0 shadow"><i class="fa fa-file-pdf"></i> PDF</a>
+                                    <a :href="`/apps/suppliers/export`" target="_blank" class="btn btn-success btn-md border-0 shadow me-3"><i class="fa fa-file-excel"></i> EXCEL</a>
+                                    <a :href="`/apps/suppliers/pdf`" target="_blank" class="btn btn-secondary btn-md border-0 shadow"><i class="fa fa-file-pdf"></i> PDF</a>
                                 </div>
 <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">

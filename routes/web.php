@@ -46,35 +46,35 @@ Route::prefix('apps')->group(function() {
         // route product store import
         Route::post('/products/import', [\App\Http\Controllers\Apps\ProductController::class, 'storeImport'])->name('apps.products.storeImport');
 
+        //route report export excel
+        Route::get('/products/export', [\App\Http\Controllers\Apps\ProductController::class, 'export'])->name('apps.products.export');
+
+        //route report print pdf
+        Route::get('/products/pdf', [\App\Http\Controllers\Apps\ProductController::class, 'pdf'])->name('apps.products.pdf');
+
         //route resource products
         Route::resource('/products', \App\Http\Controllers\Apps\ProductController::class, ['as' => 'apps'])
         ->middleware('permission:products.index|products.create|products.edit|products.delete');
 
         //route report export excel
-        Route::get('/product_report/export', [\App\Http\Controllers\Apps\ProductReportController::class, 'export'])->name('apps.product_report.export');
+        Route::get('/suppliers/export', [\App\Http\Controllers\Apps\SupplierController::class, 'export'])->name('apps.suppliers.export');
 
         //route report print pdf
-        Route::get('/product_report/pdf', [\App\Http\Controllers\Apps\ProductReportController::class, 'pdf'])->name('apps.product_report.pdf');
+        Route::get('/suppliers/pdf', [\App\Http\Controllers\Apps\SupplierController::class, 'pdf'])->name('apps.suppliers.pdf');
 
         //route resource suppliers
         Route::resource('/suppliers', \App\Http\Controllers\Apps\SupplierController::class, ['as' => 'apps'])
         ->middleware('permission:suppliers.index|suppliers.create|suppliers.edit|suppliers.delete');
 
         //route report export excel
-        Route::get('/suppliers_report/export', [\App\Http\Controllers\Apps\SupplierReportController::class, 'export'])->name('apps.suppliers_report.export');
+        Route::get('/customers/export', [\App\Http\Controllers\Apps\CustomerController::class, 'export'])->name('apps.customers.export');
 
         //route report print pdf
-        Route::get('/suppliers_report/pdf', [\App\Http\Controllers\Apps\SupplierReportController::class, 'pdf'])->name('apps.suppliers_report.pdf');
+        Route::get('/customers/pdf', [\App\Http\Controllers\Apps\CustomerController::class, 'pdf'])->name('apps.customers.pdf');
 
         //route resource customers
         Route::resource('/customers', \App\Http\Controllers\Apps\CustomerController::class, ['as' => 'apps'])
             ->middleware('permission:customers.index|customers.create|customers.edit|customers.delete');
-
-        //route report export excel
-        Route::get('/customers_report/export', [\App\Http\Controllers\Apps\CustomerReportController::class, 'export'])->name('apps.customers_report.export');
-
-        //route report print pdf
-        Route::get('/customers_report/pdf', [\App\Http\Controllers\Apps\CustomerReportController::class, 'pdf'])->name('apps.customers_report.pdf');
 
         // PURCHASE
         //route transaction

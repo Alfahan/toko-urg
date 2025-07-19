@@ -1,5 +1,4 @@
 <template>
-
     <Head>
         <title>Add New Role - Point Of Sale</title>
     </Head>
@@ -13,36 +12,63 @@
                                 <span class="font-weight-bold"><i class="fa fa-shield-alt"></i> ADD ROLE</span>
                             </div>
                             <div class="card-body">
-
                                 <form @submit.prevent="submit">
 
+                                    <!-- Role Name -->
                                     <div class="mb-3">
                                         <label class="fw-bold">Role Name</label>
-                                        <input class="form-control" v-model="form.name" :class="{ 'is-invalid': errors.name }" type="text" placeholder="Role Name">
-
-                                        <div v-if="errors.name" class="alert alert-danger">
+                                        <input
+                                            class="form-control"
+                                            v-model="form.name"
+                                            :class="{ 'is-invalid': errors.name }"
+                                            type="text"
+                                            placeholder="Role Name"
+                                        />
+                                        <div v-if="errors.name" class="alert alert-danger mt-2">
                                             {{ errors.name }}
                                         </div>
                                     </div>
 
-                                    <hr>
+                                    <!-- Permissions -->
+                                    <hr />
                                     <div class="mb-3">
                                         <label class="fw-bold">Permissions</label>
-                                        <br>
-                                        <div class="form-check form-check-inline" v-for="(permission, index) in permissions" :key="index">
-                                            <input class="form-check-input" type="checkbox" v-model="form.permissions" :value="permission.name" :id="`check-${permission.id}`">
-                                            <label class="form-check-label" :for="`check-${permission.id}`">{{ permission.name }}</label>
+                                        <div class="d-flex justify-content-end mb-2">
+                                            <button class="btn btn-sm btn-secondary" type="button" @click="toggleSelectAll">
+                                                {{ isAllSelected ? 'Deselect All' : 'Select All' }}
+                                            </button>
+                                        </div>
+                                        <div class="row">
+                                            <div
+                                                class="col-md-4 mb-2"
+                                                v-for="permission in permissions"
+                                                :key="permission.id"
+                                            >
+                                                <div class="form-check">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="checkbox"
+                                                        :id="`check-${permission.id}`"
+                                                        :value="permission.name"
+                                                        v-model="form.permissions"
+                                                    />
+                                                    <label class="form-check-label" :for="`check-${permission.id}`">
+                                                        {{ permission.name }}
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <!-- Buttons -->
+                                    <div class="row mt-4">
                                         <div class="col-12">
                                             <button class="btn btn-primary shadow-sm rounded-sm" type="submit">SAVE</button>
                                             <button class="btn btn-warning shadow-sm rounded-sm ms-3" type="reset">RESET</button>
                                         </div>
                                     </div>
-                                </form>
 
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -53,77 +79,62 @@
 </template>
 
 <script>
-    import LayoutApp from '../../../Layouts/App.vue';
+import LayoutApp from '../../../Layouts/App.vue';
+import { Head } from '@inertiajs/inertia-vue3';
+import { reactive, computed } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
+import Swal from 'sweetalert2';
 
-    //import Heade and useForm from Inertia
-    import { Head, Link } from '@inertiajs/inertia-vue3';
+export default {
+    layout: LayoutApp,
+    components: { Head },
 
-    //import reactive from vue
-    import { reactive } from 'vue';
+    props: {
+        errors: Object,
+        permissions: Array,
+    },
 
-    //import inerita adapter
-    import { Inertia } from '@inertiajs/inertia';
+    setup(props) {
+        const form = reactive({
+            name: '',
+            permissions: [],
+        });
 
-    //import sweet alert2
-    import Swal from 'sweetalert2';
+        const isAllSelected = computed(() => {
+            return form.permissions.length === props.permissions.length;
+        });
 
-    export default {
-        //layout
-        layout: LayoutApp,
-
-        //register component
-        components: {
-            Head,
-            Link
-        },
-
-        //props
-        props: {
-            errors: Object,
-            permissions: Array,
-        },
-
-        //composition API
-        setup() {
-
-            //define form with reactive
-            const form = reactive({
-                name: '',
-                permissions: [],
-            });
-
-            //method "submit"
-            const submit = () => {
-
-                //send data to server
-                Inertia.post('/apps/roles', {
-                    //data
-                    name: form.name,
-                    permissions: form.permissions,
-                }, {
-                    onSuccess: () => {
-                        //show success alert
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Role saved successfully.',
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 2000
-                        });
-                    },
-                });
-
+        const toggleSelectAll = () => {
+            if (isAllSelected.value) {
+                form.permissions = [];
+            } else {
+                form.permissions = props.permissions.map(p => p.name);
             }
+        };
 
-            return {
-                form,
-                submit,
-            };
+        const submit = () => {
+            Inertia.post('/apps/roles', {
+                name: form.name,
+                permissions: form.permissions,
+            }, {
+                onSuccess: () => {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Role saved successfully.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                },
+            });
+        };
 
-        }
+        return {
+            form,
+            submit,
+            isAllSelected,
+            toggleSelectAll,
+        };
     }
+}
 </script>
-
-<style>
-
-</style>

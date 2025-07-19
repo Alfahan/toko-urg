@@ -6,7 +6,7 @@
         <div class="fade-in">
             <div class="text-center mb-4">
                 <a href="" class="text-dark text-decoration-none">
-                    <img src="/images/cash-machine.png" width="70" alt="">
+                    <img src="/images/icon-cashier.png" width="70" alt="">
                     <h3 class="mt-2 font-weight-bold">Point Of Sale</h3>
                     <h3 class="mt-2 font-weight-bold">Toko Ramadhan</h3>
                 </a>

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Apps;
 
-use App\Exports\ProductInReportExport;
-use App\Exports\ProductOutReportExport;
 use App\Http\Controllers\Controller;
 use App\Imports\ProductImport;
+use App\Exports\ProductsExport;
 use App\Models\Product;
 use App\Models\UnitOfMeasurement;
 use Illuminate\Http\Request;
@@ -184,6 +183,35 @@ class ProductController extends Controller
         Excel::import(new ProductImport(), $request->file('file'));
 
         return redirect()->route('apps.products.index');
+    }
+
+    /**
+     * export
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function export(Request $request)
+    {
+        return Excel::download(new ProductsExport(), 'reports_product.xlsx');
+    }
+
+    /**
+     * pdf
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function pdf(Request $request)
+    {
+        //get purchase by range date
+        $products = Product::with('unit_of_measurement')->get();
+
+        //load view PDF with data
+        $pdf = PDF::loadView('exports.reports_product', compact('products'));
+
+        //return PDF for preview / download
+        return $pdf->download('reports_product.pdf');
     }
 
 }

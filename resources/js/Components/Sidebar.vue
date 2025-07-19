@@ -32,8 +32,6 @@
             </Link>
         </li>
 
-        <li class="c-sidebar-nav-title" v-if="hasAnyPermission(['customers.index']) || hasAnyPermission(['customers_report.index'])">CUSTOMER</li>
-
         <li class="c-sidebar-nav-item" v-if="hasAnyPermission(['customers.index'])">
             <Link class="c-sidebar-nav-link" href="/apps/customers" :class="{ 'active': $page.url.startsWith('/apps/customers') }">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -43,8 +41,6 @@
             <span class="ms-2">Customers</span>
             </Link>
         </li>
-
-        <li class="c-sidebar-nav-title" v-if="hasAnyPermission(['products.index']) || hasAnyPermission(['product_report.index'])">PRODUCT</li>
 
         <li class="c-sidebar-nav-item" v-if="hasAnyPermission(['products.index'])">
             <Link class="c-sidebar-nav-link" href="/apps/products" :class="{ 'active': $page.url.startsWith('/apps/products') }">
@@ -95,7 +91,7 @@
             </Link>
         </li>
 
-        <li class="c-sidebar-nav-title" v-if="hasAnyPermission(['transactions.index']) || hasAnyPermission(['sales.index']) || hasAnyPermission(['profits.index'])"></li>
+        <li class="c-sidebar-nav-title" v-if="hasAnyPermission(['transactions.index']) || hasAnyPermission(['sales.index']) || hasAnyPermission(['profits.index'])">TRANSACTION</li>
 
         <li class="c-sidebar-nav-item" v-if="hasAnyPermission(['transactions.index'])">
             <Link class="c-sidebar-nav-link" href="/apps/transactions" :class="{ 'active': $page.url.startsWith('/apps/transactions') }">

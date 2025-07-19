@@ -5,7 +5,7 @@
             <button class="c-sidebar-close c-class-toggler d-lg-none" type="button" data-target="#sidebar" data-class="c-sidebar-show"></button>
 
             <div class="c-sidebar-brand d-lg-down-none" style="background: #2769a0;">
-                <img src="/images/cash-machine.png" class="bg-light rounded shadow-sm p-1" width="35"> <span class="ml-2 font-weight-bold">Point Of Sale</span>
+                <img src="/images/icon-cashier.png" class="bg-light rounded shadow-sm p-1" width="35"> <span class="ml-2 font-weight-bold">Point Of Sale</span>
             </div>
 
             <!-- sidebar -->
@@ -44,7 +44,7 @@
         components: {
             Header,
             Sidebar
-        }   
+        }
 
     }
 </script>

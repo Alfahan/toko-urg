@@ -23,32 +23,32 @@
                                 </form>
                                 <hr>
                                 <div class="export text-end mb-3">
-                                    <a :href="`/apps/customers_report/export`" target="_blank" class="btn btn-success btn-md border-0 shadow me-3"><i class="fa fa-file-excel"></i> EXCEL</a>
-                                    <a :href="`/apps/customers_report/pdf`" target="_blank" class="btn btn-secondary btn-md border-0 shadow"><i class="fa fa-file-pdf"></i> PDF</a>
+                                    <a :href="`/apps/customers/export`" target="_blank" class="btn btn-success btn-md border-0 shadow me-3"><i class="fa fa-file-excel"></i> EXCEL</a>
+                                    <a :href="`/apps/customers/pdf`" target="_blank" class="btn btn-secondary btn-md border-0 shadow"><i class="fa fa-file-pdf"></i> PDF</a>
                                 </div>
-<div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">No. Telp</th>
-                                            <th scope="col">Address</th>
-                                            <th scope="col" style="width:20%">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="(customer, index) in customers.data" :key="index">
-                                            <td>{{ customer.name }}</td>
-                                            <td>{{ customer.no_telp }}</td>
-                                            <td>{{ customer.address }}</td>
-                                            <td class="text-center" v-if="hasAnyPermission(['customers.delete']) || hasAnyPermission(['customers.edit'])">
-                                                <Link :href="`/apps/customers/${customer.id}/edit`" v-if="hasAnyPermission(['customers.edit'])" class="btn btn-success btn-sm me-2"><i class="fa fa-pencil-alt me-1"></i> EDIT</Link>
-                                                <button @click.prevent="destroy(customer.id)" v-if="hasAnyPermission(['customers.delete'])" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> DELETE</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-</div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">No. Telp</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col" style="width:20%">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(customer, index) in customers.data" :key="index">
+                                                <td>{{ customer.name }}</td>
+                                                <td>{{ customer.no_telp }}</td>
+                                                <td>{{ customer.address }}</td>
+                                                <td class="text-center" v-if="hasAnyPermission(['customers.delete']) || hasAnyPermission(['customers.edit'])">
+                                                    <Link :href="`/apps/customers/${customer.id}/edit`" v-if="hasAnyPermission(['customers.edit'])" class="btn btn-success btn-sm me-2"><i class="fa fa-pencil-alt me-1"></i> EDIT</Link>
+                                                    <button @click.prevent="destroy(customer.id)" v-if="hasAnyPermission(['customers.delete'])" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> DELETE</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <Pagination :links="customers.links" align="end"/>
                             </div>
                         </div>

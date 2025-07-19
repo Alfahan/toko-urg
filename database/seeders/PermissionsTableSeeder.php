@@ -51,12 +51,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name' => 'products.create', 'guard_name' => 'web']);
         Permission::create(['name' => 'products.edit', 'guard_name' => 'web']);
         Permission::create(['name' => 'products.delete', 'guard_name' => 'web']);
-        Permission::create(['name' => 'products.in', 'guard_name' => 'web']);
-        Permission::create(['name' => 'products.out', 'guard_name' => 'web']);
         Permission::create(['name' => 'products.buy_price', 'guard_name' => 'web']);
-
-        // Permission product reports
-        Permission::create(['name' => 'product_report.index', 'guard_name' => 'web']);
 
         // Permission Suppliers
         Permission::create(['name' => 'suppliers.index', 'guard_name' => 'web']);
@@ -95,7 +90,7 @@ class PermissionsTableSeeder extends Seeder
         // Permissions profites
         Permission::create(['name' => 'profits.index', 'guard_name' => 'web']);
 
-                Permission::create(['name' => 'dashboard.sales_all_transaction_month', 'guard_name' => 'web']);
+        Permission::create(['name' => 'dashboard.sales_all_transaction_month', 'guard_name' => 'web']);
         Permission::create(['name' => 'dashboard.profit_all_transaction_month', 'guard_name' => 'web']);
         Permission::create(['name' => 'dashboard.assets', 'guard_name' => 'web']);
         Permission::create(['name' => 'dashboard.profit_net_month', 'guard_name' => 'web']);
