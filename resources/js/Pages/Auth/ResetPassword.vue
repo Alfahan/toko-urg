@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>Update Password - Toko Ramadhan</title>
+        <title>Update Password - Toko URG</title>
     </Head>
     <div class="col-md-4">
         <div class="fade-in">
@@ -8,7 +8,7 @@
                 <a href="" class="text-dark text-decoration-none">
                     <img src="/images/icon-cashier.png" width="70">
                     <h3 class="mt-2 font-weight-bold">Point Of Sale</h3>
-                    <h3 class="mt-2 font-weight-bold">Toko Ramadhan</h3>
+                    <h3 class="mt-2 font-weight-bold">Toko URG</h3>
                 </a>
             </div>
             <div class="card-group">

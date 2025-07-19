@@ -1,7 +1,7 @@
 <template>
 
     <Head>
-        <title>Login Account - Toko Ramadhan</title>
+        <title>Login Account - Toko URG</title>
     </Head>
     <div class="col-md-4 col-12">
         <div class="fade-in">

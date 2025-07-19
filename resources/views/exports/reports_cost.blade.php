@@ -1,6 +1,6 @@
 <div class="title" style="padding-bottom: 13px">
     <div style="text-align: center;text-transform: uppercase;font-size: 15px">
-        Toko Ramadhan
+        Toko URG
     </div>
     <div style="text-align: center">
         Alamat: Jalan Gono Tirtowidjoyo No 678 Dusun II Kp Kebon Kalapa RT 007/004 DS Kutapohaci, Ciampel

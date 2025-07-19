@@ -26,7 +26,7 @@
             <!-- end content -->
 
             <footer class="c-footer">
-            <div><strong>Point Of Sale Toko Ramadhan</strong> &copy; 2024 - Toko Ramadhan</div>
+            <div><strong>Point Of Sale Toko URG</strong> &copy; 2024 - Toko URG</div>
             </footer>
         </div>
         </div>
