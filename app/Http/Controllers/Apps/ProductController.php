@@ -23,7 +23,8 @@ class ProductController extends Controller
     {
         //get products
         $products = Product::when(request()->q, function($products) {
-            $products = $products->where('title', 'like', '%'. request()->q . '%');
+            $products = $products->where('title', 'like', '%'. request()->q . '%')
+                                ->orWhere('barcode', 'like', '%'. request()->q . '%');
         })->with('unit_of_measurement')->latest()->paginate(10);
 
         //return inertia
