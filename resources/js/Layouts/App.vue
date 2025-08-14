@@ -35,7 +35,7 @@
             <!-- end content -->
 
             <footer class="c-footer">
-            <div><strong>Toko URG - Toko Ramadhan</strong> &copy; 2025 - Toko Ramadhan</div>
+            <div><strong>Toko URG</strong> &copy; 2025 - Toko URG</div>
             </footer>
         </div>
         </div>
