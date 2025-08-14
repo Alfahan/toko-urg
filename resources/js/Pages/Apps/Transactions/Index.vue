@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
                                 <hr>
-<div class="table-responsive">
+                            <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr style="background-color: #e6e6e7;">
@@ -102,7 +102,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-</div>
+                            </div>
                                 <hr>
                                 <div class="d-flex align-items-end flex-column bd-highlight mb-3">
                                     <div class="mt-auto bd-highlight">

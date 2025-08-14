@@ -40,128 +40,38 @@
                                     </table>
 
                                 </div>
-                                <div class="title" style="padding-bottom: 13px">
 
-                                    <div class="transaction" style="text-align: center; width: 100%;">
-                                        <table class="transaction-table" style="text-align: center; width: 100%;" cellspacing="0" cellpadding="0">
-                                            <tr class="price-tr">
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center" colspan="5">PRODUK</td>
-                                                <td style="text-align: center">HARGA</td>
-                                                <td style="text-align: center">QTY</td>
-                                                <td style="text-align: center" colspan="5">SUB TOTAL</td>
-                                            </tr>
-                                            <tr class="price-tr">
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                            </tr>
-                                            <tr v-for="(item, index) in transaction.transaction_details" :key="index">
-                                                <td style="text-align: center" colspan="5">{{ item.product.title }}</td>
-                                                <td style="text-align: center">{{ item.price_per_qty }}</td>
-                                                <td style="text-align: center">{{ item.qty }}</td>
-                                                <td style="text-align: center" colspan="5">{{ formatPrice(item.price) }}</td>
-                                            </tr>
-
-                                            <tr class="price-tr">
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td colspan="3" class="final-price" style="text-align: right">
-                                                    TOTAL
-                                                </td>
-                                                <td colspan="3" class="final-price">
-                                                    :
-                                                </td>
-                                                <td class="final-price" style="text-align: center">
-                                                    {{ formatPrice(transaction.grand_total + transaction.discount) }}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="final-price" style="text-align: right">
-                                                    DISKON
-                                                </td>
-                                                <td colspan="3" class="final-price">
-                                                    :
-                                                </td>
-                                                <td class="final-price" style="text-align: center">
-                                                    {{ formatPrice(transaction.discount) }}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="final-price" style="text-align: right">
-                                                    TOTAL FIX
-                                                </td>
-                                                <td colspan="3" class="final-price">
-                                                    :
-                                                </td>
-                                                <td class="final-price" style="text-align: center">
-                                                    {{ formatPrice(transaction.grand_total) }}
-                                                </td>
-                                            </tr>
-
-                                            <tr class="price-tr">
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                                <td colspan="3">
-                                                    <div class="separate-line" style="border-top: 1px dashed #000;"></div>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td colspan="3" class="final-price" style="text-align: right">
-                                                    TUNAI
-                                                </td>
-                                                <td colspan="3" class="final-price">
-                                                    :
-                                                </td>
-                                                <td class="final-price" style="text-align: center">
-                                                    {{ formatPrice(transaction.cash) }}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" class="final-price" style="text-align: right">
-                                                    KEMBALI
-                                                </td>
-                                                <td colspan="3" class="final-price">
-                                                    :
-                                                </td>
-                                                <td class="final-price" style="text-align: center">
-                                                    {{ formatPrice(transaction.change) }}
-                                                </td>
-                                            </tr>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">PRODUK</th>
+                                                    <th scope="col">HARGA</th>
+                                                    <th scope="col">QTY</th>
+                                                    <th scope="col">SUB TOTAL</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(item, index) in transaction.transaction_details" :key="index">
+                                                    <td>{{ item.product.title }}</td>
+                                                    <td>Rp. {{ formatPrice(item.price_per_qty) }}</td>
+                                                    <td>{{ item.qty }}</td>
+                                                    <td>Rp. {{ formatPrice(item.price) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3" class="text-end fw-bold" style="background-color: #e6e6e7;">
+                                                        TOTAL
+                                                    </td>
+                                                    <td class="text-end fw-bold" style="background-color: #e6e6e7;">
+                                                        Rp. {{ formatPrice(transaction.grand_total) }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
